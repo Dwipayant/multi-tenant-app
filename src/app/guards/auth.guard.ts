@@ -8,8 +8,8 @@ import { AppService } from '../services/index';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-   constructor(private app: AppService, private router:Router,
-     private activeRoute: ActivatedRoute, private location:Location) {}
+   constructor(private app: AppService, private router: Router,
+     private activeRoute: ActivatedRoute, private location: Location) {}
 
     canActivate(
       route: ActivatedRouteSnapshot,

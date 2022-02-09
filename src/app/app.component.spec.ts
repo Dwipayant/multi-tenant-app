@@ -1,35 +1,46 @@
-import { TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { delay, of } from 'rxjs';
 import { AppComponent } from './app.component';
+import { AppService, DynamicThemeService } from './services';
 
 describe('AppComponent', () => {
+  const languagesMockData = ['en', 'fr', 'pt', 'es', 'de', 'hi'];
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        TranslateModule.forRoot({
+            loader: {
+              provide: TranslateLoader,
+              useClass: TranslateFakeLoader
+            }
+        }),
+        HttpClientModule
       ],
       declarations: [
         AppComponent
       ],
+      providers: [TranslateService, AppService, DynamicThemeService]
     }).compileComponents();
   });
-
+  
+  beforeEach(async () => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+  });
+  
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'multi-tenant'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('multi-tenant');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('multi-tenant app is running!');
-  });
+  it('should initialize languages',() => {
+   spyOn(component, "initializeLang").and.callThrough();
+   expect(component.initializeLang).toHaveBeenCalledTimes(0);
+  })
 });
