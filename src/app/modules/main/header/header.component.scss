@@ -1,0 +1,111 @@
+
+ :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }.esspl-navigation-bar{
+    // background-color: #bd6670;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+    box-shadow: inset 0px 0 4px 0px rgba(0, 0, 0, 0.3);
+  }
+  .header-logo {
+    height: 50px;
+  }
+  .mat-toolbar-row, .mat-toolbar-single-row{
+    padding: 0px !important;
+  }
+  .header-info{
+    display: inline-flex;
+    color: #fafafa;
+    min-height: 60px;
+    padding: 0px;
+    align-items: center;
+  }
+  .toolbar-title {
+    margin-top: 4px;
+    font-size: var(--toolbar-heading-font);
+    font-weight: 600;
+    padding-left: 15px;
+  }
+  .header-menu{
+    display: inline-flex !important;
+  }
+  .list-item-active{
+    background: #000 !important;
+  }
+  .logout{
+    padding: 10px 0;
+    height: 45px;
+    cursor: pointer;
+  }
+  .menu-icon{
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    margin-left: 7px;
+  }
+  .icon-bg {
+    font-size: 13px;
+    padding: 2px 1px 0 3px;
+  }
+  a:active, a:hover {
+    color: white !important;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+  .nav-link-bg {
+      background: #000000EE;
+  }

@@ -1,0 +1,72 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "style": "kebab-case"
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    }
+  ],
+  "rules": {
+    "skipBlankLines": 0,
+    "ImportDeclaration": 0,
+    "beforeColon": 0,
+    "no-multiple-empty-lines": [2, {"max": 2}],
+    "no-multi-spaces": [
+      "error", 
+      { 
+        "exceptions": 
+        {
+           "VariableDeclarator": true,
+           "ImportDeclaration": true,
+           "Property": false 
+        } 
+      }
+    ],
+    "no-unused-vars": "off",
+    "no-use-before-define": "off",
+    "no-console": "warn",
+    "object-curly-spacing": ["error", "always", { "objectsInObjects": true }],
+    "key-spacing": ["error", { "afterColon": true }]
+    //"spaced-comment": ["error", "always", { "exceptions": ["-"] }]
+    //"multiline-comment-style": ["error", "separate-lines"]
+  }
+}
