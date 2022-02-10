@@ -5,7 +5,7 @@ import { CreateFormComponent } from './components/create-form/create-form.compon
 
 const routes: Routes = [
   {
-    path: 'home-view',
+    path: 'home',
     component: HomeViewComponent
   },
   {

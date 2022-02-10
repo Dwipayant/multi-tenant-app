@@ -110,7 +110,7 @@ export class LoginComponent implements OnInit {
     const user =  this.credentials.find(e => { return e.password === fValue.password && e.userName === fValue.userName });
     if (user && this.loginForm.valid && this.dynForm?.baseFG?.valid) {
       this.app.login({ id: user.userName, ...user });
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['home']);
     }
   }
 
