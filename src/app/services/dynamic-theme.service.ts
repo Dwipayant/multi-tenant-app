@@ -3,7 +3,7 @@ import { Injectable, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Subject } from 'rxjs';
 
-import { Color, ThemeModel } from '../Interfaces/index'
+import { Color, ThemeModel } from '../interfaces/index'
 declare const tinycolor: any;
 
 @Injectable({
