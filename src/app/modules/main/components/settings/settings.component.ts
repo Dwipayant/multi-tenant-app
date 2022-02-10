@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
-import { DynamicThemeService, AppService } from '../../../services/index';
+import { DynamicThemeService, AppService } from '@services/index';
 import { TenantService } from 'src/app/tenant/tenant.service';
 import { Color, ThemeModel } from '../../../../Interfaces/index';
 @Component({
