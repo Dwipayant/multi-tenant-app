@@ -1,7 +1,7 @@
 import { ApplicationRef, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
-import { CURRENCY_LIST, LOCALE_LIST } from '@shared/index';
+import { CURRENCY_LIST, LOCALE_LIST } from '@constants/index';
 import { LangSettingsService } from '@services/index';
 
 @Component({

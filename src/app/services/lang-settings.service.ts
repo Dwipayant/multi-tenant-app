@@ -6,7 +6,7 @@ import { Locale } from 'date-fns';
 import { enIN } from 'date-fns/locale';
 import { DateFnsConfigurationService } from 'ngx-date-fns';
 import { Subject } from 'rxjs';
-import { CURRENCY_LIST, LOCALE_LIST } from '@shared/index'
+import { CURRENCY_LIST, LOCALE_LIST } from '@constants/index'
 import { CURRENCY_CODE } from '../enums/index';
 import { LocaleModel } from '../Interfaces/index';
 

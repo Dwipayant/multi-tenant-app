@@ -13,6 +13,7 @@
       "@tenant/*": ["./src/app/tenant/*"],
       "@validators/*": ["./src/app/validators/*"],
       "@guards/*": ["./src/app/guards/*"],
+      "@constants/*": ["./src/app/constants/*"],
       "@interfaces/*": ["src/app/interfaces/*"],
       "@assets/*": ["./src/assets/*"],
       

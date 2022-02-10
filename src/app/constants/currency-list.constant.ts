@@ -1,4 +1,4 @@
-import { CURRENCY_CODE } from '../../enums/index';
+import { CURRENCY_CODE } from '../enums/index';
 export const CURRENCY_LIST = [
     {
       label: CURRENCY_CODE.USD,

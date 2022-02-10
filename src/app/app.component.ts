@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LangSettingsService, AppService, DynamicThemeService } from '@services/index';
 import { ThemeModel } from '@interfaces/index';
 import { GlobalConst } from './global.constant';
-import { LOCALE_LIST } from './shared';
+import { LOCALE_LIST } from '@constants/index';
 
 @Component({
   selector: 'app-root',
