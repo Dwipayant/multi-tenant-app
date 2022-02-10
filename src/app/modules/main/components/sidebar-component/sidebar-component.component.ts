@@ -2,9 +2,9 @@ import { Component, AfterViewInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { AppService, DynamicThemeService } from '../../../services/index';
+import { AppService, DynamicThemeService } from '../../../../services/index';
 
-import { ROUTE } from '../interface/index';
+import { ROUTE } from '../../interfaces/index';
 
 // declare var $;
 @Component({
@@ -75,8 +75,7 @@ export class SidebarComponentComponent implements AfterViewInit {
     router: Router,
     private app: AppService,
     private themeService: DynamicThemeService,
-    public translateService:TranslateService,
-    @Inject('CURRENCY_ID') public cCode
+    public translateService:TranslateService
   ) {
     this.router = router;
     this.themeController();

@@ -66,7 +66,6 @@ let IMPORT_EXPORT = [
   declarations: [],
   imports: [
     CommonModule,
-    ...IMPORT_EXPORT
   ],
   exports: IMPORT_EXPORT
 })

@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialsModule, DynFormModule, UserManagementRoutingModule } from '../index';
+
+/* internal modules */
+import { DynFormModule, MaterialsModule } from '@shared/index';
+
+/* components */
+import { LoginComponent } from './components/login/login.component';
+import { UserManagementRoutingModule } from '../index';
+import { ChangePswdComponent } from './components/change-pswd/change-pswd.component';
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    ChangePswdComponent
   ],
   imports: [
     CommonModule,

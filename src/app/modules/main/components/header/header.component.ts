@@ -19,32 +19,6 @@ export class HeaderComponent implements OnInit {
   activeLoginURL = false;
   activeRegisterURL = false;
   isLoggedIn = false;
-  langs = [
-    {
-      label: "English",
-      code: 'en'
-    },
-    {
-      label: "French",
-      code: 'fr'
-    },
-    {
-      label: "Português",
-      code: 'pt'
-    },
-    {
-      label: "Español",
-      code: 'es'
-    },
-    {
-      label: "Deutsch",
-      code: 'de'
-    },
-    {
-      label: "Hindi",
-      code: 'hi'
-    },
-  ]
 
   constructor(public app: AppService,
     public translate: TranslateService,
@@ -63,17 +37,8 @@ export class HeaderComponent implements OnInit {
     this.app.logout();
   }
 
-  lol() {
+  toggleEvent(event) {
     this.toggleSidenav.emit();
-  }
-
-  changeLang(langSelect) {
-    this.translate.use(langSelect);
-    this.translate.setDefaultLang(langSelect);
-    this.document.documentElement.setAttribute('lang', langSelect);
-    const url = this.router.createUrlTree([], { relativeTo: this.activatedRoute, queryParams: { lang: langSelect } }).toString()
-    // this.location.go(url);
-    this.router.navigateByUrl(url, { replaceUrl: true });
   }
 
 }

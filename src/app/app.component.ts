@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { AppService, DynamicThemeService } from './services';
-import { ThemeModel } from './Interface/index';
+import { AppService, DynamicThemeService } from './services/index';
+import { ThemeModel } from './Interfaces/index';
 
 @Component({
   selector: 'app-root',

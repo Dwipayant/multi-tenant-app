@@ -3,8 +3,12 @@
 
     <section class="description mt-5">
         <mat-card class="card-border-radius">
-            <!-- <div class="header-text">{{'_HOME.aboutMultiTenant' | translate}}</div>
-            <div class="section-desc mt-3">{{'_HOME.descMultiTenant' | translate}}</div> -->
+            <div class="header-text">{{'_HOME.aboutMultiTenant' | translate}}</div>
+            <div class="section-desc mt-3">{{'_HOME.descMultiTenant' | translate}}</div>
+            <div *ngIf="app.clientAuth">
+                <div> Welcome {{app.clientAuth?.userName}}</div>
+                <div> Tenant Id {{app.clientAuth?.tenantId}}</div>
+            </div>
         </mat-card>
     </section>
 
