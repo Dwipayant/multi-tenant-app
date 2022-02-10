@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AppService } from '../../../../services/index';
+import { AppService } from '@services/index';
 
 @Component({
   selector: 'app-change-pswd',

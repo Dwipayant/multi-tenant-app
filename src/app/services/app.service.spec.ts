@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TenantService } from '@app/tenant/tenant.service';
+import { TenantService } from '../tenant/tenant.service';
 
 import { AppService } from './app.service';
 import { StorageService } from './storage.service';

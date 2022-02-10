@@ -6,24 +6,14 @@ import { Locale } from 'date-fns';
 import { de, enGB, enIN, enUS, es, fr, pt } from 'date-fns/locale';
 import { DateFnsConfigurationService } from 'ngx-date-fns';
 import { Subject } from 'rxjs';
-export enum CURRENCY_CODE {
-  USD = "USD",
-  EUR = "EUR",
-  GBP = "GBP",
-  INR = "INR"
-} 
 
-export interface LocaleModel {
-    id:string,
-    label: string,
-    code: string,
-    currency?: CURRENCY_CODE,
-    date: Locale,
-}
+import { CURRENCY_CODE } from '../enums/index';
+import { LocaleModel } from '../Interfaces/index';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class LangSettingsService {
 
   private selectedLocal:LocaleModel = LOCALE_LIST[0];

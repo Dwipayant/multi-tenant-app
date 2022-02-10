@@ -2,21 +2,20 @@ import { Location } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MainModule } from './modules/main/main.module';
-import { UserManagementModule } from './modules/user-management/user-management.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { HomeModule } from './modules/index';
-import { CustomDateModule, TranslateUIModule } from '@shared/index';
 
 /* services */
 import { TranslateService } from '@ngx-translate/core';
 import { DateFnsConfigurationService } from 'ngx-date-fns';
-import { LangSettingsService } from '../app/services/index';
-
+import { LangSettingsService } from '@services/index';
+/* Shared modules */
+import { CustomDateModule, TranslateUIModule } from '@shared/index';
+/* Other modules */
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { MainModule } from './modules/main/main.module';
+import { UserManagementModule } from './modules/user-management/user-management.module';
+import { HomeModule } from './modules/index';
 import { enIN } from 'date-fns/locale';
 
 const dateLangConfig = new DateFnsConfigurationService();

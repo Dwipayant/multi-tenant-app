@@ -4,7 +4,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { AppService } from 'src/app/services/index';
+import { AppService } from '@services/index';
 
 @Component({
   selector: 'app-header',

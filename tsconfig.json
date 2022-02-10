@@ -18,7 +18,7 @@
       
     },
     "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
     "strict": false,
     // "noImplicitOverride": true,
     // "noPropertyAccessFromIndexSignature": true,

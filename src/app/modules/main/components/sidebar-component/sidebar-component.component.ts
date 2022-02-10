@@ -2,7 +2,7 @@ import { Component, AfterViewInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { AppService, DynamicThemeService } from '../../../../services/index';
+import { AppService, DynamicThemeService } from '@services/index';
 
 import { ROUTE } from '../../interfaces/index';
 

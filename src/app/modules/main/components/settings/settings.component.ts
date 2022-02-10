@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 import { DynamicThemeService, AppService } from '@services/index';
 import { TenantService } from 'src/app/tenant/tenant.service';
-import { Color, ThemeModel } from '../../../../interfaces/index';
+import { Color, ThemeModel } from '@interfaces/index';
 @Component({
   selector: 'multi-tenant-settings',
   templateUrl: './settings.component.html',
