@@ -24,7 +24,7 @@ export class AppService {
   }
 
   constructor(private storageService: StorageService, 
-    private router:Router, 
+    private router: Router, 
     private http: HttpClient,
     private tenantService: TenantService
     ) {
@@ -43,7 +43,7 @@ export class AppService {
     this._clientAuth = clientData;
     this.storageService.setItem('clientAuth', this.clientAuth);
     this.themeData$.next(true);
-    this.router.navigate(['dashboard']);
+    //this.router.navigate(['dashboard']);
   }
 
   isLoggedIn() { return !!(this.clientAuth && this.tenantId) }
@@ -53,7 +53,7 @@ export class AppService {
     this._tenantId = null;
     this.storageService.clear();
     this.themeData$.next(false);
-    this.router.navigateByUrl('/');
+    //this.router.navigateByUrl('/');
   }
 
   getSelectedTheme() { 
