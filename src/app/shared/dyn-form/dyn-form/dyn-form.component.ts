@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { AbstractControl, FormArray, FormGroup, Validators } from '@angular/forms';
 
 import { FormService } from 'src/app/services/index';
-import { FormControlModel } from '../FormControlModel.model';
+import { FormControlModel } from '../../interfaces/FormControlModel.model';
 
 
 // https://dev.to/myndpm/a-new-approach-to-have-dynamic-forms-in-angular-5d11

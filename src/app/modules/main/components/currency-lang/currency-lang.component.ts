@@ -1,6 +1,8 @@
-import { Component, DEFAULT_CURRENCY_CODE, Inject, OnInit } from '@angular/core';
+import { Component, DEFAULT_CURRENCY_CODE, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { CURRENCY_LIST, LangSettingsService, LOCALE_LIST } from '@services/index';
+
+import { CURRENCY_LIST, LOCALE_LIST } from '@shared/index';
+import { LangSettingsService } from '@services/index';
 
 @Component({
   selector: 'esspl-currency-lang',

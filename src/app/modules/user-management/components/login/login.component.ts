@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AppService } from '@services/index';
 
+import { AppService } from '@services/index';
 import { DynFormComponent } from '@shared/dyn-form/dyn-form/dyn-form.component';
-import { FormControlModel } from '@shared/dyn-form/FormControlModel.model';
+import { FormControlModel } from '@shared/index';
+
 declare var bootstrap: any;
 
 @Component({

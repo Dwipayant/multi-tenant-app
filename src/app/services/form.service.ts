@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { FormControlModel } from '@shared/dyn-form/FormControlModel.model';
+import { FormControlModel } from '@shared/index';
 import { CustomValidatorService } from '../validators/custom-validator.service';
 
 export const FORM_CONST = {

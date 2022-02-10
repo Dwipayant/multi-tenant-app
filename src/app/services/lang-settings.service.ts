@@ -3,10 +3,10 @@ import { ApplicationRef, Inject, Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Locale } from 'date-fns';
-import { de, enGB, enIN, enUS, es, fr, pt } from 'date-fns/locale';
+import { enIN } from 'date-fns/locale';
 import { DateFnsConfigurationService } from 'ngx-date-fns';
 import { Subject } from 'rxjs';
-
+import { CURRENCY_LIST, LOCALE_LIST } from '@shared/index'
 import { CURRENCY_CODE } from '../enums/index';
 import { LocaleModel } from '../Interfaces/index';
 
@@ -37,6 +37,7 @@ export class LangSettingsService {
   getLocale() {
     return this.selectedLocal;
   }
+
   getDateF() : Locale {
     return this.selectedLocal.date || enIN ;// getLocaleDateFormat(this.getLanguage(), FormatWidth.Short)
   }
@@ -48,6 +49,7 @@ export class LangSettingsService {
   getCurrencyObj() {
     return this.currencyObj;
   }
+  
   setLocale(localeItem:LocaleModel) {
     this.selectedLocal = localeItem;
     this.changeLanguage(localeItem.code);
@@ -72,81 +74,3 @@ export class LangSettingsService {
     this.router.navigateByUrl(url, { replaceUrl: true });
   }
 }
-
-export const CURRENCY_LIST = [
-  {
-    label: CURRENCY_CODE.USD,
-    symbol: "$",
-    code: CURRENCY_CODE.USD,
-  },
-  {
-    label: CURRENCY_CODE.INR,
-    symbol: "$",
-    code: CURRENCY_CODE.INR
-  },
-  {
-    label: CURRENCY_CODE.EUR,
-    symbol: "$",
-    code: CURRENCY_CODE.EUR
-  },
-  {
-    label: CURRENCY_CODE.GBP,
-    symbol: "$",
-    code: CURRENCY_CODE.GBP
-  }
-]
-export const LOCALE_LIST : LocaleModel[]= [
-  {
-    id: "enIn",
-    label: "English - India",
-    code: 'en',
-    currency: CURRENCY_CODE.INR,
-    date: enIN,
-  },
-  {
-    id: "enUS",
-    label: "English - USA",
-    code: 'en',
-    currency: CURRENCY_CODE.USD,
-    date: enUS,
-  },
-  
-  {
-    id: "enGB",
-    label: "English - UK",
-    code: 'en', 
-    currency: CURRENCY_CODE.GBP,
-    date: enGB,
-  },
-  {
-    id: 'fr',
-    label: "French",
-    code: 'fr',
-    date: fr,
-  },
-  {
-    id: 'pt',
-    label: "Português",
-    code: 'pt',
-    date: pt
-  },
-  {
-    id: 'es',
-    label: "Español",
-    code: 'es',
-    date: es
-  },
-  {
-    id: 'de',
-    label: "Deutsch",
-    code: 'de',
-    date: de
-  },
-  {
-    id: 'hi',
-    label: "Hindi",
-    code: 'hi',
-    date: enIN,
-    currency: CURRENCY_CODE.INR
-  },
-]

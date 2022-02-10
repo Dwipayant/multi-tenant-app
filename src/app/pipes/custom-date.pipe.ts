@@ -2,7 +2,7 @@
   * Usage: dateString | localDate:'format'
  **/
 
- import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { LangSettingsService } from '../services/index';
 import { format } from 'date-fns';
  @Pipe({
