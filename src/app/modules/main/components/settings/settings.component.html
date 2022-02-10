@@ -59,7 +59,7 @@
   <div class="button-wrapper">
     <!-- <button *ngIf="!selectedTheme?._id && themeService.savedTheme?._id !== selectedTheme?.id && selectedTheme?.id !=='DYN_THM'"
       mat-raised-button color="primary" (click)="saveTheme()">Save Theme</button> -->
-    <button *ngIf="selectedTheme?._id && !selectedTheme.isActive" mat-raised-button color="primary" (click)="applyTheme(selectedTheme)">Apply Theme</button>
+    <!-- <button *ngIf="selectedTheme?._id && !selectedTheme.isActive" mat-raised-button color="primary" (click)="applyTheme(selectedTheme)">Apply Theme</button> -->
   </div>
 </mat-card>
 <mat-card *ngIf="(showAddTheme || showEditTheme) && dynamicThemeForm" class="card-border-radius">

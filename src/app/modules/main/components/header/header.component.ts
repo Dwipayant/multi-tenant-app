@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.app.logout();
+    this.router.navigateByUrl('/');
   }
 
   toggleEvent(event) {

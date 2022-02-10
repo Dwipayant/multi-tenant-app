@@ -128,28 +128,8 @@ export class SettingsComponent {
   }
 
   saveTheme() {
-    if (this.selectedTheme.theme === "dynamic-theme")
-      var { label, primary = "", accent = "", warn = "", theme: themeName } = this.dynamicThemeForm.value;
-    else
-      var { label, primary, accent, warn, theme: themeName } = <any>this.selectedTheme;
-
-    this.appService.saveTheme({ "primary": primary, "accent": accent, "warn": warn, label, themeName, clientId: "multi-tenant-id", toolBarBG: "", toolBarText: "", isActive: false }).subscribe(res => {
-   
       this.themeApplied = false;
       this.showAddTheme = false;
-      this.getAllThemes();
-    }, (error) => {
-     
-    });
-  }
-
-  applyTheme(theme:ThemeModel) {
-    this.appService.applyTheme({ "themeId": theme.id }).subscribe(res => {
-      // this.themeApplied = false;
-      this.getAllThemes();
-    }, (error) => {
-      if (!error.message) return null;
-    });
   }
 
   getAllThemes(){

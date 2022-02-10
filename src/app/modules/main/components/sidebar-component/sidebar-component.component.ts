@@ -93,6 +93,7 @@ export class SidebarComponentComponent implements AfterViewInit {
 
   logout() {
     this.app.logout();
+    this.router.navigateByUrl('/');
   }
   setMinHeight() {
     // const headerH = $("#app-header").children().outerHeight();

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppService } from '@app/services';
 
 import { DynFormComponent } from '@shared/dyn-form/dyn-form/dyn-form.component';
@@ -71,7 +72,12 @@ export class LoginComponent implements OnInit {
   extraForm;
 
   loginForm:FormGroup;
-  constructor(public app: AppService, private fb:FormBuilder, private http:HttpClient) {
+  constructor(
+    public app: AppService, 
+    private fb:FormBuilder, 
+    private http:HttpClient,
+    private router: Router
+  ) {
     var toastTrigger = document.getElementById('liveToastBtn')
     var toastLiveExample = document.getElementById('liveToast')
     if (toastTrigger) {
@@ -98,13 +104,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(event: Event) {
-
     event.preventDefault();
     event.stopPropagation();
     const fValue = this.loginForm.value;
     const user =  this.credentials.find(e => { return e.password === fValue.password && e.userName === fValue.userName });
     if (user && this.loginForm.valid && this.dynForm?.baseFG?.valid) {
       this.app.login({ id: user.userName, ...user });
+    this.router.navigate(['dashboard']);
     }
   }
 

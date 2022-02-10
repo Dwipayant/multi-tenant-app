@@ -23,11 +23,11 @@ export class AppService {
     return this._clientAuth;
   }
 
-  constructor(private storageService: StorageService, 
-    private router: Router, 
+  constructor(
+    private storageService: StorageService,
     private http: HttpClient,
     private tenantService: TenantService
-    ) {
+  ) {
     this._tenantId = this.storageService.getItem('tenantId') as string;
     this._clientAuth = this.storageService.getParsedObject('clientAuth') as any;
 
@@ -43,7 +43,6 @@ export class AppService {
     this._clientAuth = clientData;
     this.storageService.setItem('clientAuth', this.clientAuth);
     this.themeData$.next(true);
-    //this.router.navigate(['dashboard']);
   }
 
   isLoggedIn() { return !!(this.clientAuth && this.tenantId) }
@@ -53,7 +52,6 @@ export class AppService {
     this._tenantId = null;
     this.storageService.clear();
     this.themeData$.next(false);
-    //this.router.navigateByUrl('/');
   }
 
   getSelectedTheme() { 
@@ -62,13 +60,5 @@ export class AppService {
 
   getAllThemes(){
     return this.http.get(`assets/data/getAllThemes.json`)
-  }
-
-  applyTheme(data:any){
-    return this.http.post(`/applyTheme`, data, { params: data ,responseType: "text" });
-  }
-
-  saveTheme(theme:any){
-    return this.http.post(`/saveTheme`, theme, { responseType: "text" });
   }
 }
