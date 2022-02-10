@@ -14,23 +14,28 @@ import { DynFormModule, MaterialsModule, TranslateUIModule } from '@shared/index
 import { HomeViewComponent } from './components/home-view/home-view.component';
 import { CreateFormComponent } from './components/create-form/create-form.component';
 import { DialogSuccessComponent } from './components/dialog-success/dialog-success.component';
+import { CoreModule } from '@shared/core/core.module';
 
 @NgModule({
   declarations: [
     HomeViewComponent, 
     CreateFormComponent, 
-    DialogSuccessComponent,]
+    DialogSuccessComponent,
+  ]
     ,
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MaterialsModule,
     FormsModule,
     ReactiveFormsModule,
+    
     MatFormFieldModule,
     MatInputModule,
+    
     DynFormModule,
-    TranslateUIModule
+    MaterialsModule,
+    TranslateUIModule,
+    CoreModule
   ]
 })
 export class HomeModule { }

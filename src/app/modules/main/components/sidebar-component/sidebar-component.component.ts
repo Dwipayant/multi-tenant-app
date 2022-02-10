@@ -6,20 +6,17 @@ import { AppService, DynamicThemeService } from '@services/index';
 
 import { ROUTE } from '../../interfaces/index';
 
-// declare var $;
 @Component({
   selector: 'multi-tenant-sidebar-component',
   templateUrl: './sidebar-component.component.html',
   styleUrls: ['./sidebar-component.component.scss']
 })
-export class SidebarComponentComponent implements AfterViewInit {
-  userColor: any = [];
+export class SidebarComponentComponent {
   item!: { title: '', route: '' };
-  router: Router;
   menuLists: ROUTE[] = [
     {
       icon: '',
-      route: 'home-view',
+      route: 'home',
       title: 'Home',
       condition: ()=> {return true }
     },
@@ -27,7 +24,7 @@ export class SidebarComponentComponent implements AfterViewInit {
       icon: '',
       route: 'login',
       title: 'Login',
-      condition: ()=> {return true }
+      condition: ()=> {return !this.app.isLoggedIn() }
     },
     {
       icon: '',
@@ -47,16 +44,6 @@ export class SidebarComponentComponent implements AfterViewInit {
       title: 'Settings',
       condition: ()=> {return true }
     },
-    // {
-    //   icon: '',
-    //   route: '',
-    //   onClick : () => {this.fileDownload()},
-    //   title: 'DownloadJSON',
-    //   params: {
-    //     path:"/assets/data/dynform copy.json",
-    //   },
-    //   condition: ()=> {return true }
-    // },
     {
       icon: '',
       route: null,
@@ -65,14 +52,12 @@ export class SidebarComponentComponent implements AfterViewInit {
       condition: ()=> {return this.app.isLoggedIn() }
     }
    
-  ];;
+  ];
   fontCounter=0;
-  price = 858.65;
-  dateNow = new Date();
   toggleControl = this.themeService.currentThemeMode;
- count =2;
+
   constructor(
-    router: Router,
+    private router: Router,
     private app: AppService,
     private themeService: DynamicThemeService,
     public translateService:TranslateService
@@ -82,26 +67,11 @@ export class SidebarComponentComponent implements AfterViewInit {
     this.translateService.currentLang
   }
 
-  fileDownload(){
-  
-
-}
-
-  ngAfterViewInit(){
-    this.setMinHeight();
-  }
-
   logout() {
     this.app.logout();
     this.router.navigateByUrl('/');
   }
-  setMinHeight() {
-    // const headerH = $("#app-header").children().outerHeight();
-    // const footerH = $("#app-footer").children().outerHeight();
-    // $("#main-router-outlet").css('min-height', `calc( 100vh - ${ footerH + headerH}px)`);
 
-    // $("#main-router-outlet").css('padding-bottom', `calc( ${footerH}px)`);
-  }
   resizeFont(){
     let fontItems = [
       { key: "--normal-font", size: 16 },
@@ -125,11 +95,9 @@ export class SidebarComponentComponent implements AfterViewInit {
     this.themeService.getThemeModeChangedSubject().subscribe((res: any) => {
       this.toggleControl = res;
     }, (error:any) => { });
-    // this.themeService.setTheme();
   }
+
   toggleThemeMode() {
     this.themeService.toggleThemeMode();
-  }
-  consoleLog() {
   }
 }

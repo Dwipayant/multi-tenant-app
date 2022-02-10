@@ -4,9 +4,8 @@ export * from './translate-ui/translate-ui.module'
 export * from './dyn-form/dyn-form.module';
 
 /* Constants exports */
-
-export * from './Constants/CurrencyList';
-export * from './Constants/LocaleList';
+export * from './constants/currency-list.constant';
+export * from './constants/locales.constant';
 
 /*Interfaces */
 export * from './interfaces/FormControlModel.model';

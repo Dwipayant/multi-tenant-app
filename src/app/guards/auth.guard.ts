@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { GlobalConst } from '@app/global.constant';
 import { Observable } from 'rxjs';
 import { AppService } from '../services/index';
 
@@ -20,7 +21,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
           // this.router.navigateByUrl('/');
         }
         else if(this.app.tenantId === route.params.tenantId && urlArray.filter(e => e).length == 1) {
-          this.router.navigate(['dashboard']);
+          this.router.navigate([GlobalConst.DefaultRouteAuth]);
         }
         else if(isLoggedIn && this.app.tenantId && this.app.tenantId !== route.params.tenantId) {
           // this.updateUrl(route, state);

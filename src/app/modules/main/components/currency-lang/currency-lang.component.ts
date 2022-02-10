@@ -1,4 +1,4 @@
-import { Component, DEFAULT_CURRENCY_CODE, Inject } from '@angular/core';
+import { ApplicationRef, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { CURRENCY_LIST, LOCALE_LIST } from '@shared/index';
@@ -21,7 +21,7 @@ export class CurrencyLangComponent {
   constructor(
     public translateService:TranslateService,
     public langService: LangSettingsService,
-    @Inject(DEFAULT_CURRENCY_CODE) public cCode
+    private applicationRef: ApplicationRef,
     ) {
       this.selectedC = this.langService.getCurrency();
       this.selectedL = this.langService.getLocale().id;

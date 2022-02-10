@@ -7,6 +7,7 @@ import { MESSAGE_FORMAT_CONFIG, TranslateMessageFormatCompiler } from 'ngx-trans
 import { LangSettingsService } from 'src/app/services';
 import { DateFnsConfigurationService } from 'ngx-date-fns';
 import { enIN } from 'date-fns/locale';
+import { GlobalConst } from '@app/global.constant';
 
 
 // AoT requires an exported function for factories
@@ -42,13 +43,12 @@ const IM_EX :any= [
   providers: [
 
     { provide: DEFAULT_CURRENCY_CODE,
-      deps: [LangSettingsService, TranslateService],//some service handling global settings
       useValue: 'INR' 
     },
    
     { provide: DateFnsConfigurationService, useValue: dateLangConfig },
     { provide: MESSAGE_FORMAT_CONFIG, useValue: { 
-      locales: ['en', 'fr', 'hi', 'es', 'pt', 'de'],
+      locales: GlobalConst.LANGUAGES,
       disablePluralKeyChecks: false,
       multi: true
     } }

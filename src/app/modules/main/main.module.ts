@@ -8,22 +8,27 @@ import { DateFnsModule } from 'ngx-date-fns';
 import { COMPONENTS } from '../main/constatnts/components';
 import { CustomDateModule, MaterialsModule, TranslateUIModule } from '@shared/index';
 import { CurrencyProxyPipe } from '../../pipes/index';
+import { CoreModule } from '@shared/core/core.module';
 
 @NgModule({
   declarations: [
-    ...COMPONENTS,
-    CurrencyProxyPipe
+    ...COMPONENTS
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    
     MaterialsModule,
     MatIconModule,
+    
     TranslateUIModule,
     CustomDateModule,
-    DateFnsModule
+    DateFnsModule,
+    CoreModule
+  ],
+  providers: [
   ],
   exports: [ COMPONENTS]
 })

@@ -1,22 +1,90 @@
 <div class="pb-4">
-<div class="container-fluid mt-4">
+    <div class="container-fluid mt-4">
 
-    <section class="description mt-5">
-        <mat-card class="card-border-radius">
-            <div class="header-text">{{'_HOME.aboutMultiTenant' | translate}}</div>
-            <div class="section-desc mt-3">{{'_HOME.descMultiTenant' | translate}}</div>
-        </mat-card>
-    </section>
-    
-    <div class="mt-5" *ngIf="app.clientAuth">
-        <section class="dashboard-sec mb-4">
-            <mat-card class="container-card card-border-radius">
-                <div>
-                    <div> Welcome {{app.clientAuth?.userName}}</div>
-                    <div> Tenant Id {{app.clientAuth?.tenantId}}</div>
-                </div>
+        <div class="mt-5" *ngIf="app.clientAuth">
+            <section class="dashboard-sec mb-4">
+                <mat-card class="container-card card-border-radius">
+                    <div>
+                        <div> Welcome {{app.clientAuth?.userName}}</div>
+                        <div> Tenant Id {{app.clientAuth?.tenantId}}</div>
+                    </div>
+                </mat-card>
+            </section>
+        </div>
+
+        <section class="description mt-5">
+            <mat-card class="card-border-radius">
+                <div class="header-text">{{'_HOME.aboutMultiTenant' | translate}}</div>
+                <div class="section-desc mt-3">{{'_HOME.descMultiTenant' | translate}}</div>
             </mat-card>
         </section>
+
+        <mat-card class="my-3">
+            {{'_MAIN.translate' | translate}}
+          </mat-card>
+  
+        <mat-card class="my-3">
+
+            <div class="form-floating-2 mb-3 col-md-6">
+                <label for="floatingInput">Price</label>
+                <mat-form-field autocomplete="off" class="disabled-chips">
+                    <input matInput [(ngModel)]="price" type="number" class="form-control-2" id="floatingInput"
+                        placeholder="" name="userName">
+                </mat-form-field>
+            </div>
+
+            {{ price | currencyProxy }}
+
+        </mat-card>
+        <mat-card class="my-3">
+
+            {{dateNow | customDate}}
+        </mat-card>
+
+        <mat-card class="my-3 " >
+            <ul>
+                <li > count: 0  <span translate [translateParams]="{ count: 0 }">things</span></li>
+                <li > count: 1  <span translate [translateParams]="{ count: 1 }">things</span></li>
+                <li>count: 2  {{'things' | translate:"{ count: 2 }"}}</li>
+            </ul>
+
+            <h5 class="mt-4">PLAY GROUND - ICU Messaging - 1</h5>
+            <div class="form-floating-2 mb-3 col-md-6">
+                <label for="floatingInput">Count</label>
+                <mat-form-field autocomplete="off" class="disabled-chips">
+                    <input matInput [(ngModel)]="count" type="number" class="form-control-2" id="floatingInput"
+                    placeholder="" name="userName">
+                </mat-form-field>
+            </div>
+            <ul *ngIf="count">
+                <li>{{'things' | translate:{ 'count': count } }}</li>
+            </ul>
+        </mat-card>
+
+        <mat-card class="my-3">
+            <ul>
+                <li> gender : male | <span translate [translateParams]="{ gender: 'female', how: 'influential' }">people</span></li>
+                <li> gender : female | <span translate [translateParams]="{ gender: 'male', how: 'funny' }">people</span></li>
+                <li> gender : other | <span>{{'people' | translate:"{ how: 'affectionate' }"}} </span></li>
+
+            </ul>
+
+            <h5 class="mt-2">PLAY GROUND - ICU Messaging - 2</h5>
+            <div class="form-floating-2 mb-3 col-md-6">
+                <label for="floatingInput">Gender</label>
+
+                <section class="adding-mintop margin-bottom margin-mintop">
+                    <mat-radio-group [(ngModel)]="gender">
+                        <mat-radio-button *ngFor="let opt of genderOptions" [checked]="opt.value === gender"
+                            [value]="opt.value" class="pr-2">{{opt.label}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </section>
+            </div>
+
+            <ul *ngIf="gender">
+                <li translate [translateParams]="{ 'gender': gender, 'how': 'influential' }">people</li>
+            </ul>
+        </mat-card>
     </div>
-</div>
 </div>

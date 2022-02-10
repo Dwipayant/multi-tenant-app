@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { DEFAULT_CURRENCY_CODE, Inject, Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LangSettingsService } from '../services/index';
 
@@ -11,7 +11,6 @@ import { LangSettingsService } from '../services/index';
 export class CurrencyProxyPipe implements PipeTransform {
 
   constructor(private trans: TranslateService, 
-    @Inject(DEFAULT_CURRENCY_CODE) private cCode,
     private LangService: LangSettingsService) {}
   currencyPipe = new CurrencyPipe('en')
  

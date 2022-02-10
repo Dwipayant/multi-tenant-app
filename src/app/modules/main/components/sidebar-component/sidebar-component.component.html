@@ -7,9 +7,9 @@
         <h2 matSubheader class="side-head p-0"> Menu </h2>
       </mat-toolbar-row>
       <div class="side-list mb-2">
-        <button mat-raised-button class="btn-resize resize-left" (click)="changeFontSize(-1)" [disabled]="fontCounter<1" [ngClass]="{'cursor-pointer': fontCounter<1}">-A</button>
+        <!-- <button mat-raised-button class="btn-resize resize-left" (click)="changeFontSize(-1)" [disabled]="fontCounter<1" [ngClass]="{'cursor-pointer': fontCounter<1}">-A</button>
         <button mat-raised-button class="btn-resize resize-mid" (click)="changeFontSize(0)" [disabled]="fontCounter === 0" [ngClass]="{'cursor-pointer': fontCounter === 0}">A</button>
-        <button mat-raised-button class="btn-resize resize-right" (click)="changeFontSize(1)" [disabled]="fontCounter>5" [ngClass]="{'cursor-pointer': fontCounter>5}">A+</button>
+        <button mat-raised-button class="btn-resize resize-right" (click)="changeFontSize(1)" [disabled]="fontCounter>5" [ngClass]="{'cursor-pointer': fontCounter>5}">A+</button> -->
 
         <!-- dark mode - light mode switch/toggler -->
         <div class="float-right d-f-align-item-center cursor-pointer" (click)="toggleThemeMode()" style="margin-top:6px;">
@@ -44,35 +44,9 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <app-header (toggleSidenav)="sidenav.open();consoleLog()" id="app-header"></app-header>
+    <app-header (toggleSidenav)="sidenav.open()" id="app-header"></app-header>
     <div class="main-outlet-wrapper">
       <div id="main-router-outlet" class="position-relative main-router-outlet">
-        <mat-card>
-          {{'_MAIN.translate' | translate}}
-        </mat-card>
-
-        <mat-card>
-          {{ price | currencyProxy }}
-          {{dateNow | dfnsFormatDistanceToNow}}
-          {{dateNow | dfnsFormat: "dd/MM/yyyy"}}
-          {{dateNow | customDate}}
-
-          <ul>
-            <li translate [translateParams]="{ count: 0 }">things</li>
-            <li translate [translateParams]="{ count: 1 }">things</li>
-            <li>{{'things' | translate:"{ count: 2 }"}}</li>
-          </ul>
-          <ul>
-            <li translate [translateParams]="{ gender: 'female', how: 'influential' }">people</li>
-            <li translate [translateParams]="{ gender: 'male', how: 'funny' }">people</li>
-            <li>{{'people' | translate:"{ how: 'affectionate' }"}}</li>
-          </ul>
-          <p>{{'demo' | translate:'{item: "bagha"}'}}</p>
-          <p>{{'thing' | translate:"{ count: 0 }"}}</p>
-
-          <!-- {{dateNow |   }} -->
-          <!-- {{ dateNow | date : "dd/MM/yyy" : :translateService.currentLang }} -->
-        </mat-card>
         <router-outlet></router-outlet>
       </div>
         <app-footer id="app-footer" class="app-footer"></app-footer>

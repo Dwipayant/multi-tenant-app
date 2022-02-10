@@ -4,6 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { Subject } from 'rxjs';
 
 import { Color, ThemeModel } from '../interfaces/index'
+import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 declare const tinycolor: any;
 
 @Injectable({
@@ -35,8 +36,7 @@ export class DynamicThemeService {
     { id: 9876112, label: "Indigo Pink", theme: "indigo-pink", isActive: false },
     { id: 9876113, label: "Deeppurple Amber", theme: "deeppurple-amber", isActive: false },
     { id: 9876114, label: "Purple Green", theme: "purple-green", isActive: false },
-    // { id:"kfkdsfieir", label: "My Theme 1", theme: "dynamic-theme", isActive: false, primary:"red", accent:"green" },       
-    // { id: "DYN_THM", label: "My Theme", theme: "dynamic-theme", isActive: false },
+    { id: "DYN_THM", label: "My Theme", theme: "dynamic-theme", isActive: false, primary: "#1e91c2", accent: "#1f7fe5", warn: "#f44336", onHover: "#5bdca0", onSelect: "#6ef271", toolBarBG: "#1e91c2", toolBarText: "#FFFFFF", footerBG: "#f1f1f1", footerText: "#c12525" },
   ];
   userDefinedThemes: any[] = [];
   availableThemes: ThemeModel[] = [...this.userDefinedThemes, ...this.predefinedThemes];
@@ -46,19 +46,14 @@ export class DynamicThemeService {
   themeModes = ["light", "dark"];
   currentThemeMode: "light" | "dark" = "light";
 
-  public primaryColor = '#fecb01';//'#bb0000';
-
+  public primaryColor = '#fecb01';
   public primaryColorPalette: Color[] = [];
 
-  public secondaryColor = '#333333';//'#0000aa';
-
+  public secondaryColor = '#333333';
   public secondaryColorPalette: Color[] = [];
 
   public tertiaryColor = '#f44336';
   public tertiaryColorPalette: Color[] = [];
-
-  public onHoverColor = '#525252';
-  public onSelectColor ='#fdac00';
 
   constructor(@Inject(DOCUMENT) private document: Document) {
     this.checkBrowserLightDarkPreference();
@@ -98,7 +93,10 @@ export class DynamicThemeService {
     return this.themeChanged$;
   }
 
-  setTheme(theme: ThemeModel = this.predefinedThemes[0], mode?:any) {
+  /* 
+  ** @default: default-theme 
+  */
+  setTheme(theme: ThemeModel = null, mode?:any) {
     this.selectedTheme = theme || this.predefinedThemes[0];
 
     if (!mode) {
@@ -121,6 +119,13 @@ export class DynamicThemeService {
       this.saveHeaderFooterColor(theme.footerBG, theme, '--footer-bg');
       this.saveHeaderFooterColor(theme.footerText, theme, '--footer-text');
 
+    } else {
+      this.document.body.style.removeProperty("--bg-app-bar");
+      this.document.body.style.removeProperty("--text-app-bar");
+      this.document.body.style.removeProperty("--footer-bg");
+      this.document.body.style.removeProperty("--footer-text");
+      this.document.body.style.removeProperty("--bg-hover");
+      this.document.body.style.removeProperty("--bg-selected");
     }
     this.applyTheme();
   }

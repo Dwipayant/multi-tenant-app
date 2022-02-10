@@ -83,15 +83,15 @@
 	$bg-unselected-chip: mat-color($background, unselected-chip);
 	$bg-disabled-list-option: mat-color($background, disabled-list-option);
 
-	@if $is-dark {
+	// @if $is-dark {
 		--bg-app-bar : #{$color-primary};//#{$bg-app-bar};
 		--bg-nav-bar : #{$color-accent};
 		--bg-menu-selected: #{$a600};
-	} @else {
-		--bg-app-bar : #{$color-accent};
-		--bg-nav-bar : #{$color-accent};
-		--bg-menu-selected: #{$p600};
-	}
+	// } @else {
+		// --bg-app-bar : #{$color-accent};
+		// --bg-nav-bar : #{$color-accent};
+		// --bg-menu-selected: #{$p600};
+	// }
 		// :root {
 		--color-primary: #{$color-primary};
 		--color-accent: #{$color-accent};
@@ -201,6 +201,7 @@
 * `map-has-key()` functions.
 */
 $app-themes: (
+	// default-theme : (primary-base: $mat-purple, accent-base: $mat-green),
 		default-theme : (primary-base: $default-palette-primary, accent-base: $default-palette-accent),
 );
 

@@ -23,9 +23,12 @@ export class SettingsComponent {
     warn: [this.themeService.tertiaryColor, Validators.required],
     theme: ["dynamic-theme"],
     isActive: true,
-    // defaultThemeMode:["light"],
     onHover: ["#525252"],
     onSelect: ["#fdac00"],
+    toolBarBG: "#000000",
+    toolBarText: "#FFFFFF",
+    footerBG: "#f1f1f1",
+    footerText: "#000",
   }
 
   themeOptions = this.themeService.availableThemes;
@@ -47,11 +50,7 @@ export class SettingsComponent {
     private tenantService:TenantService
   ) {
     this.dynamicThemeForm = this.fb.group(this.dynamicThemeFormConfig);
-    
-    // this.themeService.getThemeModeChangedSubject().subscribe((res: string) => {
-    //   this.selectedThemeMode = res;
-    // });
-    
+
     this.themeService.getThemeChangedSubject().subscribe(res => {
       this.themeOptions = this.themeService.availableThemes;
       this.activeTheme = this.themeOptions.find(e => e.isActive);
@@ -73,12 +72,7 @@ export class SettingsComponent {
     if (this.selectedTheme.id !== "DYN_THM") {
       this.themeService.setTheme(this.selectedTheme);
       this.activeTheme = this.selectedTheme;
-      // this.closeOwnTheme();
       this.autoPopulateOnEdit(this.activeTheme);
-      // if(this.activeTheme.theme === "dynamic-theme" && this.showEditTheme) {
-      // } else {
-      //   this.showEditTheme = false;
-      // }
     }
   }
 
@@ -117,21 +111,14 @@ export class SettingsComponent {
       return false;
     }
     const dyTheme: ThemeModel = this.dynamicThemeForm.value;
-    // this.themeService.savePrimaryColor(dyTheme.primary);
-    // this.themeService.saveSecondaryColor(dyTheme.accent);
-    // this.themeService.saveTertiaryColor(dyTheme.warn);
-
-    // this.themeService.saveHoverColor(dyTheme.onHover);
-    // this.themeService.saveSelectedBGColor(dyTheme.onSelect);
     this.themeService.setTheme(dyTheme);
     this.themeApplied = true;
   }
 
-  saveTheme() {
-      this.themeApplied = false;
-      this.showAddTheme = false;
+  applyTheme(selectedTheme) {
+    this.themeService.setTheme(selectedTheme);
+    this.activeTheme = selectedTheme;
   }
-
   getAllThemes(){
     this.appService.getAllThemes().subscribe((res:any) => {
       const appTheme = res[this.tenantService.getTenant()];

@@ -51,6 +51,8 @@ export class LangSettingsService {
   }
   
   setLocale(localeItem:LocaleModel) {
+    if(!localeItem) return null;
+     
     this.selectedLocal = localeItem;
     this.changeLanguage(localeItem.code);
     // this.setCurrency(localeItem.currency || CURRENCY_CODE.INR);

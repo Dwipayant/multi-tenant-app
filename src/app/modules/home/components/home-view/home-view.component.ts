@@ -11,23 +11,29 @@ import { HomeService } from '../../home.service';
 })
 export class HomeViewComponent {
 
-  initialCounts = 4;
-  addMoreCount = 4;
-  viewMoreIteration = 0;
+  price = 858.65;
+  count = 2;
+  dateNow = new Date();
+  gender = "male";
+  genderOptions = [
+    {
+      value: "male",
+      label: "Male"
+    },
+    {
+      value: "female",
+      label: "Female"
+    },
+    {
+      value: "other",
+      label: "Other"
+    }
+  ];
 
-  dashboardList =[]
-   constructor(
-    private homeService: HomeService,
+  cObj = { count: this.count }
+
+  constructor(
     public app: AppService,
-    private router: Router,
   ) { }
-
-
-  showViewMore(initialCounts: number, iteration: number, addMoreCount: number) {
-    const length = Array.isArray(this. dashboardList) ? this. dashboardList.length : 0;
-    return length && length > ((initialCounts || 0) + ((iteration * addMoreCount) || 0))
-  }
-
-  reidrectTo(details: any) { }
 
 }

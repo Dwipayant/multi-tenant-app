@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { AppService, DynamicThemeService } from '@services/index';
+import { LangSettingsService, AppService, DynamicThemeService } from '@services/index';
 import { ThemeModel } from '@interfaces/index';
+import { GlobalConst } from './global.constant';
+import { LOCALE_LIST } from './shared';
 
 @Component({
   selector: 'app-root',
@@ -17,36 +19,21 @@ export class AppComponent {
     public translate: TranslateService,
     public appService: AppService, 
     private dynamicTheme: DynamicThemeService,
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
+    private langService: LangSettingsService,
     private router:Router) {
+
     this.getSelectedTheme();
+    
     this.initializeLang();
 
-    this.route.queryParamMap.subscribe(param => {
-      let lang = param.get("lang") || "";
-      lang = lang.match(/en|fr|pt|es|de|hi/) ? lang : null
-      if (lang && this.translate.getDefaultLang() !== lang) {
-        this.translate.use(lang);
-        this.translate.setDefaultLang(lang);
-      } else if(lang == null) {
-        this.translate.use('en'); 
-      }
-    })
-    this.appService.themeData$.subscribe((res) => {
-      if(res){
-        this.getSelectedTheme() 
-      } else {
-        this.dynamicTheme.setAvailabeThemes([]);
-        this.dynamicTheme.setTheme();
-      } 
-    });
+    this.getLangFromURLAndApply();
+    
+    this.fetchThemeOnDemand();    
   }
 
   initializeLang() {
-    this.translate.addLangs(['en', 'fr', 'pt', 'es', 'de', 'hi']);
-    // this.translate.setDefaultLang('en');
-    // const browserLang = this.translate.getBrowserLang();
-    // this.translate.use(browserLang.match(/en|fr|pt|es|de|hi/) ? browserLang : 'en');
+    this.translate.addLangs(GlobalConst.LANGUAGES);
   }
 
   getSelectedTheme() {
@@ -64,5 +51,41 @@ export class AppComponent {
         this.dynamicTheme.setTheme(activeTheme);
       }
     })
+  }
+
+  /* 
+  *@desc: On logging in need to fetch users theme, and on loggingout set back to default theme  
+  */
+  fetchThemeOnDemand() {
+    this.appService.themeData$.subscribe((res:boolean) => {
+      if(res){
+        /* res === true : user has loggedin fetchuser theme and apply */
+        this.getSelectedTheme() 
+      } else {
+        /* res === false : user has loggedout. Remove user's themes and apply default theme*/
+        this.dynamicTheme.setAvailabeThemes([]);
+        this.dynamicTheme.setTheme();
+      } 
+    });
+  }
+
+  getLangFromURLAndApply() {
+    this.activatedRoute.queryParamMap.subscribe(param => {
+      let lang = param.get("lang") || "";
+      lang = lang.match(GlobalConst.REG_EXP.languages) ? lang : null
+      if (lang && this.translate.getDefaultLang() !== lang) {
+        this.translate.use(lang);
+        this.translate.setDefaultLang(lang);
+        const locale = LOCALE_LIST.find(e => e.id == lang)
+        this.langService.setLocale(locale)
+      } else if(lang == null && this.translate.getDefaultLang()) {
+        const url = this.router.createUrlTree([], { relativeTo: this.activatedRoute, queryParams: { lang: this.translate.getDefaultLang() } }).toString()
+        // this.location.go(url);
+        this.router.navigateByUrl(url, { replaceUrl: true });
+      } else if(lang == null){
+        this.translate.use('en'); 
+      }
+    });
+
   }
 }

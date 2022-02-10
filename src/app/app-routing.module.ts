@@ -11,14 +11,7 @@ const routes: Routes = [
   {
     path: "theme-selection",
     pathMatch: 'full',
-    canActivate: [AuthGuard],
     component: SettingsComponent
-  },
-  {
-    path: "dyn-form",
-    pathMatch: "full",
-    canActivate: [NotAuthGuard],
-    component: CreateFormComponent
   },
   {
     path: "settings",

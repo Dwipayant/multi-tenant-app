@@ -17,6 +17,8 @@ import { MainModule } from './modules/main/main.module';
 import { UserManagementModule } from './modules/user-management/user-management.module';
 import { HomeModule } from './modules/index';
 import { enIN } from 'date-fns/locale';
+import { CurrencyProxyPipe } from './pipes';
+import { CoreModule } from '@shared/core/core.module';
 
 const dateLangConfig = new DateFnsConfigurationService();
 dateLangConfig.setLocale(enIN);
@@ -24,7 +26,6 @@ dateLangConfig.setLocale(enIN);
 @NgModule({
   declarations: [
     AppComponent,
-    // CurrencyProxyPipe
 
   ],
   imports: [
@@ -39,7 +40,8 @@ dateLangConfig.setLocale(enIN);
     HomeModule,
     
     TranslateUIModule,
-    CustomDateModule
+    CustomDateModule,
+    // CoreModule
   ],
   providers: [
     Location,

@@ -35,38 +35,37 @@
       <div class="demo-label">Accent</div>
     </div>
     <div class="demo-btn-wrapper">
-      <div class="demo-btn" [ngStyle]="{background:activeTheme.warn || themeService.tertiaryColor}"></div>
+      <div class="demo-btn" [ngStyle]="{background:activeTheme.warn}"></div>
       <div class="demo-label">Warn</div>
     </div>
     <div class="demo-btn-wrapper">
-      <div class="demo-btn" [ngStyle]="{background:activeTheme.onHover || themeService.onHoverColor}"></div>
+      <div class="demo-btn" [ngStyle]="{background:activeTheme.onHover}"></div>
       <div class="demo-label">On Hover</div>
     </div>
     <div class="demo-btn-wrapper">
-      <div class="demo-btn" [ngStyle]="{background:activeTheme.onSelect || getSelectedColorFromPrimaryColor(activeTheme.primary)}"></div>
+      <div class="demo-btn" [ngStyle]="{background:activeTheme.onSelect }"></div>
       <div class="demo-label">On Select</div>
     </div>
 
   </div>
 
   <div class="button-wrapper">
-    <!-- <button *ngIf="!selectedTheme?._id && themeService.savedTheme?._id !== selectedTheme?.id && selectedTheme?.id !=='DYN_THM'"
-      mat-raised-button color="primary" (click)="saveTheme()">Save Theme</button> -->
-    <!-- <button *ngIf="selectedTheme?._id && !selectedTheme.isActive" mat-raised-button color="primary" (click)="applyTheme(selectedTheme)">Apply Theme</button> -->
+    <button *ngIf="selectedTheme?.id && !selectedTheme.isActive" mat-raised-button color="primary" (click)="applyTheme(selectedTheme)">Apply Theme</button>
   </div>
 </mat-card>
+
 <mat-card *ngIf="(showAddTheme || showEditTheme) && dynamicThemeForm" class="card-border-radius">
   <div class="section-header">{{showAddTheme ? 'Create Your Own Theme' : 'Edit Your Theme'}}</div>
   <mat-icon (click)="closeOwnTheme()" class="close-own-theme">close</mat-icon>
   <form [formGroup]="dynamicThemeForm" class="form-wrapper" (submit)="useTheme()">
-    <div class="col-md-6 flex-start">
+    <div class="col-md-12 flex-start">
       <mat-form-field>
         <mat-label>Theme Name</mat-label>
         <input matInput type="text" formControlName="label" [(ngModel)]="dynamicThemeLabel" autocomplete="off" required>
         <mat-error *ngIf="dynamicThemeForm.get('label').invalid">Please enter theme name</mat-error>
       </mat-form-field>
     </div>
-    <div class="col-md-6 flex-end">
+    <div class="col-md-2">
       <mat-form-field>
         <mat-label>Primary Color</mat-label>
         <input matInput type="color" (input)="primaryColorChanged($event)" formControlName="primary" [(ngModel)]="primaryColor" autocomplete="off"
@@ -79,7 +78,7 @@
     </div>
 
     <!-- <hr> -->
-    <div class="col-md-6 flex-start">
+    <div class="col-md-2">
       <mat-form-field>
         <mat-label>Accent Color</mat-label>
         <input matInput type="color" formControlName="accent" [(ngModel)]="secondaryColor" autocomplete="off" required>
@@ -90,7 +89,7 @@
       <!-- <mat-spinner color="accent" [diameter]="40"></mat-spinner> -->
     </div>
 
-    <div class="col-md-6 flex-end">
+    <div class="col-md-2">
       <mat-form-field>
         <mat-label>Warn Color</mat-label>
         <input matInput type="color" formControlName="warn" [(ngModel)]="tertiaryColor" autocomplete="off" required>
@@ -99,7 +98,7 @@
       </mat-form-field>
     </div>
 
-    <div class="col-md-6 flex-start">
+    <div class="col-md-2">
       <mat-form-field>
         <mat-label>On Hover Color</mat-label>
         <input matInput type="color" formControlName="onHover" autocomplete="off" required>
@@ -108,7 +107,7 @@
       </mat-form-field>
     </div>
 
-    <div class="col-md-6 flex-end">
+    <div class="col-md-2">
       <mat-form-field>
         <mat-label>Selected Item Color</mat-label>
         <input matInput type="color" formControlName="onSelect" autocomplete="off" required>
@@ -117,20 +116,45 @@
       </mat-form-field>
     </div>
 
-    <!-- <div class="col-md-6 flex-start">
-      <mat-form-field appearance="fill">
-        <mat-label>Default Theme Mode</mat-label>
-        <mat-select formControlName="defaultThemeMode">
-          <mat-option *ngFor="let opt of themeModeOptions" [value]="opt">{{opt}}</mat-option>
-        </mat-select>
+    <div class="col-md-2">
+      <mat-form-field>
+        <mat-label>Header BG</mat-label>
+        <input matInput type="color" formControlName="toolBarBG" autocomplete="off" required>
+        <div matSuffix class="color-code">{{dynamicThemeForm?.value?.toolBarBG}}</div>
+        <mat-error *ngIf="dynamicThemeForm.get('toolBarBG').invalid">Please enter selected item color</mat-error>
       </mat-form-field>
-    </div> -->
+    </div>
+
+    <div class="col-md-2">
+      <mat-form-field>
+        <mat-label>Header Color</mat-label>
+        <input matInput type="color" formControlName="toolBarText" autocomplete="off" required>
+        <div matSuffix class="color-code">{{dynamicThemeForm?.value?.toolBarText}}</div>
+        <mat-error *ngIf="dynamicThemeForm.get('toolBarText').invalid">Please enter selected item color</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-2">
+      <mat-form-field>
+        <mat-label>Footer BG</mat-label>
+        <input matInput type="color" formControlName="footerBG" autocomplete="off" required>
+        <div matSuffix class="color-code">{{dynamicThemeForm?.value?.footerBG}}</div>
+        <mat-error *ngIf="dynamicThemeForm.get('footerBG').invalid">Please enter selected item color</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-2">
+      <mat-form-field>
+        <mat-label>Footer Color</mat-label>
+        <input matInput type="color" formControlName="footerText" autocomplete="off" required>
+        <div matSuffix class="color-code">{{dynamicThemeForm?.value?.footerText}}</div>
+        <mat-error *ngIf="dynamicThemeForm.get('footerText').invalid">Please enter selected item color</mat-error>
+      </mat-form-field>
+    </div>
 
     <div class="col-md-12 button-wrapper">
       <button mat-raised-button color="accent" class="m-2" type="submit">Use Theme</button>
-      <!-- <button class="m-2" *ngIf="selectedTheme.theme ==='dynamic-theme' && dynamicThemeForm.valid && themeApplied" mat-raised-button
-        color="primary" (click)="saveTheme()">Save Theme</button> -->
-    </div>
+     </div>
 
   </form>
 

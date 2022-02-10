@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators, ValidatorFn, AbstractControl, ValidationErrors, FormControl } from '@angular/forms';
 
-import { GlobalConst } from '../global.constants';
+import { GlobalConst } from '../global.constant';
 
 @Injectable({
   providedIn: 'root'
