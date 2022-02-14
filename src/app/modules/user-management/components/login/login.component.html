@@ -24,10 +24,10 @@
                 </mat-form-field>
             </div>
 
-            <esspl-dyn-form #dynForm *ngIf="extraForm" [formConfig]="formConfig"></esspl-dyn-form>
+            <esspl-dyn-form #dynForm *ngIf="extraForm && formConfig" [formConfig]="formConfig"></esspl-dyn-form>
 
             <div class="mt-5 d-grid gap-2 d-md-flex justify-content-center">
-                <button [disabled]="!(loginForm.valid && dynForm?.baseFG?.valid)" type="submit" class="btn btn-primary btn-lg"
+                <button [disabled]="!(loginForm.valid && (dynForm ? dynForm?.baseFG?.valid: true))" type="submit" class="btn btn-primary btn-lg"
                     id="toastTrigger">Login</button>
             </div>
         </form>

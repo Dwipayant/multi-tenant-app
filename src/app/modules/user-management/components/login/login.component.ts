@@ -91,8 +91,8 @@ export class LoginComponent implements OnInit {
 
     this.http.get('assets/data/tenant.json').subscribe(res => {
       this.tenantData = res as any;
-      this.extraForm = this.tenantData.find(e => e.tenantId === ("ts-esspl" ||this.app.tenantId));
-      if(!this.extraForm) this.extraForm = this.tenantData[this.tenantData.length - 1]; 
+      this.extraForm = this.tenantData.find(e => e.tenantId === ("dummy" ||this.app.tenantId));
+      // if(!(this.extraForm && this.extraForm.loginForm)) this.extraForm = this.tenantData[this.tenantData.length - 1]; 
       this.formConfig = this.extraForm?.loginForm;
     })
   }
@@ -109,7 +109,7 @@ export class LoginComponent implements OnInit {
     event.stopPropagation();
     const fValue = this.loginForm.value;
     const user =  this.credentials.find(e => { return e.password === fValue.password && e.userName === fValue.userName });
-    if (user && this.loginForm.valid && this.dynForm?.baseFG?.valid) {
+    if (user && this.loginForm.valid && (this.dynForm ? this.dynForm?.baseFG?.valid : true)) {
       this.app.login({ id: user.userName, ...user });
     this.router.navigate(['home']);
     }

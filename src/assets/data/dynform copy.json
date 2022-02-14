@@ -1,6 +1,32 @@
 [
 
     {
+        "label": "Pan Number",
+        "controlType": "INPUT",
+        "controlName": "pan",
+        "value": null,
+        "maxLength": 10,
+        "placeholder": "PANCS8765E",
+        "type": "text",
+        "min": null,
+        "uppercase": true,
+        "validations": [
+            {
+                "name": "pan",
+                "validator": "validatePanNumber",
+                "validatorClass": "CustomValidatorService",
+                "errorMsg": "Please provide valid pan number example VANPP7643E or CANCA98765Z"
+            },
+            {
+                "name": "required",
+                "validator": "required",
+                "validatorClass": "Validators",
+                "errorMsg": "Please provide pan number"
+            }
+        ],
+        "readonly": null
+    },
+    {
         "label": "Nick Name",
         "controlType": "INPUT",
         "controlName": "nickName",

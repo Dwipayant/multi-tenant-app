@@ -1,5 +1,9 @@
 [
     {
+        "tenantId": "dummy",
+        "loginForm": null
+    },
+    {
         "tenantId": "odisha-esspl-2",
         "loginForm": [
             

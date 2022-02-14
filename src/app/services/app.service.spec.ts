@@ -40,7 +40,7 @@ describe('AppService', () => {
       clear: () => {
         store = {};
       }
-    };
+    };-
     spyOn(localStorage, 'getItem').and.callFake(mockLocalStorage.getItem);
     spyOn(localStorage, 'setItem').and.callFake(mockLocalStorage.setItem);
     spyOn(localStorage, 'removeItem').and.callFake(mockLocalStorage.removeItem);

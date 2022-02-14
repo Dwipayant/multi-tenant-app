@@ -51,8 +51,8 @@ export class CustomValidatorService extends Validators {
   public static validatePanNumber(formControl: FormControl) {
     let data = formControl.value ? formControl.value.toString() : "";
     data = data.trim();
-    let emptyspaceRex = GlobalConst.REG_EXP.pan;
-    return !RegExp(emptyspaceRex).test(data) ? { pan: true } : null;
+    let panRegx = GlobalConst.REG_EXP.pan;
+    return !RegExp(panRegx).test(data) ? { pan: true } : null;
   }
 
 }

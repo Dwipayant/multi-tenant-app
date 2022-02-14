@@ -1,0 +1,21 @@
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: center;
+    margin: 0 auto;
+}
+.card-item {
+    margin: 10px;
+    min-width: calc(25% - 20px);
+}
+.data-item {
+    display: flex;
+    justify-content: space-between;
+}
+.card-actions {
+    justify-content: flex-end;
+    display: flex;
+}
+.active-style {
+    color: blue;
+}

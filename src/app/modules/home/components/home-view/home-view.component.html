@@ -23,7 +23,7 @@
             {{'_MAIN.translate' | translate}}
           </mat-card>
   
-        <mat-card class="my-3">
+        <!-- <mat-card class="my-3">
 
             <div class="form-floating-2 mb-3 col-md-6">
                 <label for="floatingInput">Price</label>
@@ -85,6 +85,9 @@
             <ul *ngIf="gender">
                 <li translate [translateParams]="{ 'gender': gender, 'how': 'influential' }">people</li>
             </ul>
-        </mat-card>
+        </mat-card> -->
+
+        <esspl-table [tableHeaders]="tableHeaders" [tableData]="tableData" *ngIf="tableData"></esspl-table>
+        <esspl-card-view [list]="tenantData"></esspl-card-view>
     </div>
 </div>

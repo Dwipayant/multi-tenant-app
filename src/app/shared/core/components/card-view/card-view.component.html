@@ -1,0 +1,22 @@
+<div class="mt-4">
+
+    <div class="card-actions">
+        <mat-icon (click)="viewType='LIST'" [ngClass]="{'active-style':viewType==='LIST'}">view_list</mat-icon>
+        <mat-icon (click)="viewType='CARD'" [ngClass]="{'active-style':viewType==='CARD'}">view_module</mat-icon>
+    </div>
+    <div class="cards-wrapper" [ngClass]="{'flex-column':viewType==='LIST'}">
+        <mat-card class="card-item" *ngFor="let eachItem of list;let idx=index">
+            <mat-card-title-group class="justify-content-start">
+                <!-- <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" > -->
+              <mat-card-title class="ml-2">{{eachItem.tenantId}}</mat-card-title>
+              <mat-card-subtitle class="ml-2">Small</mat-card-subtitle>
+            </mat-card-title-group>
+            <mat-card-content *ngIf="eachItem.loginForm">
+              <div class="data-item" *ngFor="let eachInput of eachItem.loginForm">
+                <div>{{eachInput.label}}</div>
+                <div>{{eachInput.controlType}}</div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+    </div>
+</div>
