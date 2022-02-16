@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '@app/interfaces/user.model';
 
 import { AppService } from '@services/index';
 import { DynFormComponent } from '@shared/dyn-form/dyn-form/dyn-form.component';
@@ -110,8 +111,10 @@ export class LoginComponent implements OnInit {
     const fValue = this.loginForm.value;
     const user =  this.credentials.find(e => { return e.password === fValue.password && e.userName === fValue.userName });
     if (user && this.loginForm.valid && (this.dynForm ? this.dynForm?.baseFG?.valid : true)) {
+      const usr = User.getInstance({ id: user.tenantId, name: user.userName });
+      console.log(usr.toObject());
       this.app.login({ id: user.userName, ...user });
-    this.router.navigate(['home']);
+      this.router.navigate(['home']);
     }
   }
 
